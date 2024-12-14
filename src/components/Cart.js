@@ -1,24 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import axios from 'axios';
 import { CartContext } from '../CartContext';
+import { increaseQuantity, decreaseQuantity } from '../api/cartApi';
 
 const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
 
-  const increaseQuantity = (productId) => {
-    setCart(cart.map(item =>
-      item.id === productId
-        ? { ...item, quantity: item.quantity + 1, total: (item.quantity + 1) * item.price }
-        : item
-    ));
-  };
-
-  const decreaseQuantity = (productId) => {
-    setCart(cart.map(item =>
-      item.id === productId
-        ? { ...item, quantity: item.quantity - 1, total: (item.quantity - 1) * item.price }
-        : item
-    ).filter(item => item.quantity > 0));
-  };
+  useEffect(() => {
+    axios.get("http://localhost:3005/cart")
+      .then((response) => {
+        setCart(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the cart items:", error);
+      });
+  }, [setCart]);
 
   return (
     <div className="Cart">
@@ -31,8 +27,8 @@ const Cart = () => {
             <p>Price: ₪ {item.price}</p>
             <p>Quantity: {item.quantity}</p>
             <p>Total: {item.total}</p>
-            <button onClick={() => increaseQuantity(item.id)}>+</button>
-            <button onClick={() => decreaseQuantity(item.id)}>-</button>
+            <button onClick={() => increaseQuantity(cart, setCart, item.id)}>+</button>
+            <button onClick={() => decreaseQuantity(cart, setCart, item.id)}>-</button>
           </li>
         ))}
       </ul>

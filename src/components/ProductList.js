@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { CartContext } from '../CartContext';
+import { addToCart } from '../api/cartApi';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -12,21 +13,6 @@ const ProductList = () => {
     });
   }, []);
 
-  const addToCart = (product) => {
-    const existingProduct = cart.find(item => item.id === product.id);
-    if (existingProduct) {
-      const updatedCart = cart.map(item =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1, total: (item.quantity + 1) * item.price }
-          : item
-      );
-      setCart(updatedCart);
-    } else {
-      const newCartItem = { ...product, quantity: 1, total: product.price };
-      setCart([...cart, newCartItem]);
-    }
-  };
-
   return (
     <div>
       <h1>Products</h1>
@@ -36,7 +22,7 @@ const ProductList = () => {
             <h2>{product.name}</h2>
             <img src={product.image} alt={product.name} width="200" />
             <p>Price: ₪ {product.price}</p>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
+            <button onClick={() => addToCart(cart, setCart,product)}>Add to Cart</button>
           </li>
         ))}
       </ul>
