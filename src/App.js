@@ -1,17 +1,18 @@
-import React from 'react';
-import './App.css';
-import ProductList from './components/ProductList';
-import Cart from './components/Cart';
-import CartSummary from './components/CartSummary';
+import React from 'react'
+import Jumbotron from './components/Jumbotron'
+import Navbar from './components/Navbar'
+import Product from './components/Product'
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="App">
-      <ProductList />
-      <Cart />
-      <CartSummary />
-    </div>
-  );
+    <>
+    <Jumbotron />
+    <Navbar />
+    <Product />
+    <Footer />
+    </>
+  )
 }
 
-export default App;
+export default App
