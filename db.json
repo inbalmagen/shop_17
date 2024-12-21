@@ -51,6 +51,22 @@
       "image": "https://upload.wikimedia.org/wikipedia/en/e/ee/Front_%26_Back_Face_of_iPhone_16_Pro_Max.png",
       "quantity": 1,
       "total": 4000
+    },
+    {
+      "id": "1",
+      "name": "Iphone 15",
+      "price": 4000,
+      "image": "https://upload.wikimedia.org/wikipedia/en/e/ee/Front_%26_Back_Face_of_iPhone_16_Pro_Max.png",
+      "quantity": 1,
+      "total": 4000
+    },
+    {
+      "id": "1",
+      "name": "Iphone 15",
+      "price": 4000,
+      "image": "https://upload.wikimedia.org/wikipedia/en/e/ee/Front_%26_Back_Face_of_iPhone_16_Pro_Max.png",
+      "quantity": 1,
+      "total": 4000
     }
   ]
 }

@@ -8,7 +8,7 @@ const CartSummary = () => {
   const totalPrice = cart.reduce((sum, item) => sum + item.total, 0);
 
   return (
-    <div className="CartSummary">
+    <div className="container">
       <h2>Cart Summary</h2>
       <p>Total Items: {totalItems}</p>
       <p>Total Price: ₪ {totalPrice}</p>
